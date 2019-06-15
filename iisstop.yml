@@ -14,14 +14,17 @@
     - meta: end_play
       when: result.state == 'stopped'
 
-    - name: stop iss when running
-      win_service:
-        name: w3logsvc
-        state: stopped
-        when: result.state == 'running'
+
+
 
     - name: test1
       win_service:
         name: W3SVC
+        state: stopped
+        when: result.state == 'running'
+
+    - name: stop iss when running
+      win_service:
+        name: w3logsvc
         state: stopped
         when: result.state == 'running'
